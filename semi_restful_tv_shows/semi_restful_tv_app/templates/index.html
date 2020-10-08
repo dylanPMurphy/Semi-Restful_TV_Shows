@@ -11,22 +11,22 @@
 <div id="container">
     <form action="books/create" method="post">
         {% csrf_token %}
-        <h2>Add a Book</h2>
-        <label for="lname">Title:</label><br>
-        <input type="text" id="title"" name="title">
-        <label for="Desc">Description:</label>
-        <textarea id="textArea" name="desc" rows="4" cols="50"></textarea>
-        <button type="submit">Add</button>
     </form>
+    <h1>All Shows</h1>
     <table class="mytable">
         <th>ID</th>
         <th>Title</th>
-        <th>Action</th>
-        {% for book in allBooks%}
+        <th>Network</th>
+        <th>Release Date</th>
+        <th>Description</th>
+        {% for show in allShows%}
         <tr>
-            <td>{{book.id}}</td>
-            <td>{{book.title}}</td>
-            <td><a href="books/{{book.id}}">View</a></td>
+            <td>{{show.id}}</td>
+            <td>{{show.title}}</td>
+            <td>{{show.network}}</td>
+            <td>{{show.release_date}}</td>
+            <td>{{show.desc}}</td>
+            <td><a href="shows/{{show.id}}">View</a></td>
         </tr>
         {%endfor%}
     </table>
