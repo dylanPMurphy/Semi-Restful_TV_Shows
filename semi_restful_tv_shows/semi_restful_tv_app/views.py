@@ -2,11 +2,11 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 def index(request):
-    redirect(request, '/shows')
+    return redirect('/shows')
 
 
 def home(request):
-    pass
+    
 
 def newShow(request):
     pass
