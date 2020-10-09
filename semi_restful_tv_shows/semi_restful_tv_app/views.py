@@ -12,9 +12,16 @@ def home(request):
     return render(request,'index.html', context)
 
 def newShow(request):
-    pass
+    return render(request,'new_show.html')
+
 def createShow(request):
-    pass
+    newShow = Show.objects.create(
+        title = request.POST['title'],
+        network = request.POST['network'],
+        release_date = request.POST['release_date'],
+        desc = request.POST['desc']
+    )
+    return redirect('/shows/'+str(newShow.id))
 
 def readShow(request):
     pass
