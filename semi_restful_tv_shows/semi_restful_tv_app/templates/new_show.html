@@ -26,10 +26,72 @@
 <body>
     <h2>Add a Show</h2>
     <form action="/shows/create" method="POST">
+        <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" /> 
+
+<!-- Inline CSS based on choices in "Settings" tab -->
+<style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
+
+<!-- HTML Form (wrapped in a .bootstrap-iso div) -->
+<div class="bootstrap-iso">
+ <div class="container-fluid">
+  <div class="row">
+   <div class="col-md-6 col-sm-6 col-xs-12">
+    <form method="post">
+        {%csrf_token%}
+     <div class="form-group ">
+      <label class="control-label requiredField" for="title">
+       Title
+       <span class="asteriskField">
+        *
+       </span>
+      </label>
+      <input class="form-control" id="title" name="title" type="text"/>
+     </div>
+     <div class="form-group ">
+      <label class="control-label requiredField" for="netwoRk">
+       Network
+       <span class="asteriskField">
+        *
+       </span>
+      </label>
+      <input class="form-control" id="network" name="networK" type="text"/>
+     </div>
+     <div class="form-group ">
+      <label class="control-label requiredField" for="release_date">
+       Release Date
+       <span class="asteriskField">
+        *
+       </span>
+      </label>
+      <input class="form-control" id="release_date" name="release_date" placeholder="YYYY-MM-DD" type="text"/>
+     </div>
+     <div class="form-group ">
+      <label class="control-label requiredField" for="desc">
+       Description
+       <span class="asteriskField">
+        *
+       </span>
+      </label>
+      <textarea class="form-control" cols="40" id="desc" name="desc" rows="10"></textarea>
+     </div>
+     <div class="form-group">
+      <div>
+       <button class="btn btn-primary " name="submit" type="submit">
+        Submit
+       </button>
+      </div>
+     </div>
+    </form>
+   </div>
+  </div>
+ </div>
+</div>
+    <!-- <form action="/shows/create" method="POST">
         {% csrf_token%}
         Title:<input type="text" name="title">
         Network:<input type="text" name="network">
-        <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+        <div class="input-group date" id="datetimepicker1" data-target-input="nearest" name="release_date">
             <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
             <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -44,7 +106,7 @@
         <input type="submit" value="Create">
         <script>
         </script>
-    </form>
+    </form> -->
     <a href="/">Go Back</a>
 </body>
 </html>

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from .models import *
 # Create your views here.
 def index(request):
@@ -17,14 +17,14 @@ def newShow(request):
 def createShow(request):
     newShow = Show.objects.create(
         title = request.POST['title'],
-        network = request.POST['network'],
+        network = request.POST.get('network', 'default'),
         release_date = request.POST['release_date'],
         desc = request.POST['desc']
     )
     return redirect('/shows/'+str(newShow.id))
 
-def readShow(request):
-    pass
+def readShow(request, show_id):
+    return HttpResponse("This is the page for {}".format(Show.objects.get(id=show_id).title))
 
 
 def editShow(request):
