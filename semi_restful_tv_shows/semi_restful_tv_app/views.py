@@ -17,7 +17,7 @@ def newShow(request):
 def createShow(request):
     newShow = Show.objects.create(
         title = request.POST['title'],
-        network = request.POST.get('network', 'default'),
+        network = request.POST['network'],
         release_date = request.POST['release_date'],
         desc = request.POST['desc']
     )
