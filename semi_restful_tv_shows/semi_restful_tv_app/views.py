@@ -24,7 +24,10 @@ def createShow(request):
     return redirect('/shows/'+str(newShow.id))
 
 def readShow(request, show_id):
-    return HttpResponse("This is the page for {}".format(Show.objects.get(id=show_id).title))
+    context={
+        'selected_show': Show.objects.get(id=show_id)
+    }
+    return render(request,'show_profile.html', context)
 
 
 def editShow(request):
