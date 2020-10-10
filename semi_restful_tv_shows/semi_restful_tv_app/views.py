@@ -24,14 +24,19 @@ def createShow(request):
     return redirect('/shows/'+str(newShow.id))
 
 def readShow(request, show_id):
+
     context={
         'selected_show': Show.objects.get(id=show_id)
     }
     return render(request,'show_profile.html', context)
 
 
-def editShow(request):
-    pass
+def editShow(request, show_id):
+    context={
+        'selected_show': Show.objects.get(id=show_id) 
+    }
+    return render(request, 'edit_show.html', context)
+
 def updateShow(request):
     pass
 
