@@ -37,9 +37,14 @@ def editShow(request, show_id):
     }
     return render(request, 'edit_show.html', context)
 
-def updateShow(request):
-    pass
-
+def updateShow(request, show_id):
+    selected_show = Show.objects.get(id=show_id)
+    selected_show.title = request.POST['title']
+    selected_show.network = request.POST['network']
+    selected_show.release_date = request.POST['release_date']
+    selected_show.desc = request.POST['desc']
+    selected_show.save()
+    return redirect('/shows/'+str(show_id))
 
 def deleteShow(request):
     pass
