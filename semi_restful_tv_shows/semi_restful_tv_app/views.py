@@ -46,5 +46,7 @@ def updateShow(request, show_id):
     selected_show.save()
     return redirect('/shows/'+str(show_id))
 
-def deleteShow(request):
-    pass
+def deleteShow(request, show_id):
+    selected_show = Show.objects.get(id=show_id)
+    selected_show.delete()
+    return redirect('/')
