@@ -28,7 +28,7 @@
             <td>{{show.desc}}</td>
             <td><a href="shows/{{show.id}}">View</a></td>
             <td><a href="shows/{{show.id}}/edit">Edit</a></td>
-            <td><a href="shows/{{show.id}}/delete">Delete</a></td>
+            <td><form action="shows/{{show.id}}/delete" method="POST">{%csrf_token%}<input class="link-button"type="submit" value="Delete"></form></td>
         </tr>
         {%endfor%}
     </table>

@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
     <title>{{selected_show.title}}</title>
 </head>
 <body>
@@ -10,6 +12,9 @@
     <h1>{{selected_show.title}}</h1>
     <h4>{{selected_show.network}}</h4>
     <p>{{selected_show.desc}}</p>
+    <p>Last Updated: {{selected_show.updated_at}}</p>
     <a href="/shows/{{selected_show.id}}/edit">EDIT</a>
+    <form action="shows/{{show.id}}/delete" method="POST">{%csrf_token%}<input class="link-button"type="submit" value="Delete"></form>
+    
 </body>
 </html>
