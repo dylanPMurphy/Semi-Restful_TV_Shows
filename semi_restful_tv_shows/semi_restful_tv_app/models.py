@@ -4,7 +4,7 @@ from django.db import models
 # No methods in our new manager should ever receive the whole request object as an argument! 
 # (just parts, like request.POST)
 class ShowManager(models.Manager):
-    def basic_validator(self, postData):
+    def create_validator(self, postData):
         errors = {}
         # add keys and values to errors dictionary for each invalid field
         if len(postData['title']) < 2:
@@ -20,3 +20,4 @@ class Show(models.Model):
     desc = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    objects = ShowManager()
