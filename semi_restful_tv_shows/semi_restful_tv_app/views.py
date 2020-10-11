@@ -39,14 +39,20 @@ def editShow(request, show_id):
     return render(request, 'edit_show.html', context)
 
 def updateShow(request, show_id):
-    if request.method == "POST":
-        selected_show = Show.objects.get(id=show_id)
-        selected_show.title = request.POST['title']
-        selected_show.network = request.POST['network']
-        selected_show.release_date = request.POST['release_date']
-        selected_show.desc = request.POST['desc']
-        selected_show.save()
-    return redirect('/shows/'+str(show_id))
+        if request.method =="POST":
+        errors = User.objects.create_validator(request.POST)
+        if len(errors)>0:
+            for key, value in errors.items():
+                messages.error(request, value)
+            return redirect('/shows/'+str(show_id)+"/edit")
+        else:
+            selected_show = Show.objects.get(id=show_id)
+            selected_show.title = request.POST['title']
+            selected_show.network = request.POST['network']
+            selected_show.release_date = request.POST['release_date']
+            selected_show.desc = request.POST['desc']
+            selected_show.save()
+            return redirect('/shows/'+str(show_id))
 
 def deleteShow(request, show_id):
     if request.method == "POST":
